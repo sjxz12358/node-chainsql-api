@@ -19,6 +19,7 @@ const validate = require('./validate')
 const Connection = require('./connect');
 const Table = require('./table');
 const util = require('./util');
+const Contract = require('./smartContract');
 const opType = require('./config').opType;
 const getFee = util.getFee;
 const getSequence = util.getSequence;
@@ -32,7 +33,8 @@ const decodeToken = util.decodeToken;
 
 
 const ChainsqlAPI = function() {
-  this.tab = null;
+	this.tab = null;
+	//this.contract = null;
   this.query = {};
   this.exec = '';
   this.token = '';
@@ -97,6 +99,17 @@ ChainsqlAPI.prototype.table = function(name) {
   this.tab.strictMode = this.strictMode;
   this.tab.event = this.event;
   return this.tab;
+}
+
+ChainsqlAPI.prototype.contract = function(jsonInterface, address, options) {
+  this.contract = new Contract(this.connect, jsonInterface, address, options);
+  // if (this.transaction) {
+  //   this.tab.transaction = this.transaction;
+  //   this.tab.cache = this.cache;
+  // }
+  // this.tab.strictMode = this.strictMode;
+  // this.tab.event = this.event;
+  return this.contract;
 }
 
 ChainsqlAPI.prototype.generateAddress = function() {
