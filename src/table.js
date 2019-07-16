@@ -407,7 +407,7 @@ function prepareTable(ChainSQL, payment, resolve, reject) {
 		token = token[ChainSQL.connect.scope + ChainSQL.tab];
 		if (token && token != '') {
 			var secret = decodeToken(ChainSQL, token);
-			const algType = ChainSQL.connect.secret.slice(0,2) === "47" ? "gmAlg" : "aes";
+			const algType = ChainSQL.connect.secret === "gmAlg" ? "gmAlg" : "aes";
 			payment.raw = crypto.symEncrypt(secret, payment.raw, algType).toUpperCase();
 		} else {
 			payment.raw = convertStringToHex(payment.raw);
