@@ -120,14 +120,14 @@ Ripple.prototype.preparePayment = function (account, amount, memos) {
 			address: this.ChainsqlAPI.connect.address,
 			maxAmount: {
 				value: _amount.value.toString(),
-				currency: 'ZXC'
+				currency: 'XRP'
 			}
 		},
 		destination: {
 			address: account,
 			amount: {
 				value: _amount.value.toString(),
-				currency: 'ZXC'
+				currency: 'XRP'
 			}
 		},
 		memos: memos
@@ -276,7 +276,7 @@ Ripple.prototype.escrowCreate = function (sDestAddr, amount, opt) {
 		destination: sDestAddr,
 		amount: {
 			value: _amount.value.toString(),
-			currency: 'ZXC'
+			currency: 'XRP'
 		}
 	};
 	if(util.isMeaningful(opt.dateFormatTMFinish)){
