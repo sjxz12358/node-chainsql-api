@@ -250,7 +250,6 @@ function _decryptData(pass,tx){
 		if(pass){
 			const algType = tx.publicKey.slice(0,2) === "47" ? "gmAlg" : "aes";
 			tx.Raw = crypto.symDecrypt(pass, tx.Raw, algType);
-			// tx.Raw = crypto.aesDecrypt(pass,tx.Raw);
 		}else{
 			tx.Raw = util.convertHexToString(tx.Raw);
 		}
